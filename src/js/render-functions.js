@@ -17,7 +17,8 @@ export const renderPhoto = function (photos) {
         comments,
         downloads,
       }) =>
-        `<li class='gallery-item'>
+        `
+        <li class='gallery-item'>
     <a class='gallery-link' href='${largeImageURL}'>
       <img class='gallery-image' src='${webformatURL}' alt='${tags}'/>
     </a>
@@ -30,8 +31,29 @@ export const renderPhoto = function (photos) {
    </li>`
     )
     .join('');
+    const ul = document.querySelector('ul');
+    ul.lastElementChild;
+    console.log(ul.lastElementChild);
+
+   
+
   const list = document.querySelector('.gallery');
-  list.innerHTML += markup;
+  list.innerHTML +='<span class="pageLine" style="display:none"></span>'+markup;
+
+
+  let lastLi = document.querySelector('.pageLine:last-child');
+  let lastI = document.querySelector('.gallery-item:last-child');
+
+  console.log("li", lastLi)
+  console.log("i", lastI)
+  if(lastLi) {
+    let el = lastLi.nextElementSibling;
+    let rect = el.getBoundingClientRect();
+    console.log(rect);
+  }
+
+
+
 };
 
 export const simpleLightbox = function () {
