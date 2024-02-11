@@ -25,13 +25,22 @@ function onSearch(e) {
   onSearchButton(e);
 }
 
-function onClickMore(e) {
+async function onClickMore(e) {
   page += 1;
+  const totalPage = await onSearchButton(e);
 
-  onSearchButton(e);
+  if(page >= totalPage ){
+    iziToast.error({
+    messageColor: '#FFF',
+    color: 'blue',
+    iconUrl: closeIcon,
+    position: 'topRight',
+    message: "We're sorry, but you've reached the end of search results.",
+  })
+  ;}
 }
 
-function onSearchButton(e) {
+async function onSearchButton(e) {
   e.preventDefault();
 
   if (inputSearch === '') {
@@ -45,6 +54,7 @@ function onSearchButton(e) {
     return;
   }
 
-  pixsbyApi(inputSearch, page);
+  const totalPage = await pixsbyApi(inputSearch, page);
   form.reset();
+  return totalPage;
 }

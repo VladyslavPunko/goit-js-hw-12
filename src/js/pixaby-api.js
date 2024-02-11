@@ -4,6 +4,7 @@ import iziToast from 'izitoast';
 import closeIcon from '../img/bi_x-octagon.png';
 
 export default async function getPhotos(inputSearch, page) {
+  const limit = 200;
   try {
     const searchParams = new URLSearchParams({
       key: '42209591-dcd9ad54ecaffcfe9e9b64d04',
@@ -11,7 +12,7 @@ export default async function getPhotos(inputSearch, page) {
       image_type: 'photo',
       orientation: 'horizontal',
       safesearch: 'false',
-      per_page: 15,
+      per_page: limit,
       page: page,
     });
     showSpiner();
@@ -19,6 +20,9 @@ export default async function getPhotos(inputSearch, page) {
     // const photos = result.json();
 
     const arrayPhotos = result.data.hits;
+    const totalHits = result.data.totalHits;
+    const totalPages = Math.ceil(totalHits / limit);
+
     if (arrayPhotos.length === 0) {
       noImages();
     }
@@ -27,6 +31,7 @@ export default async function getPhotos(inputSearch, page) {
     hideSpiner();
 
     simpleLightbox();
+    return totalPages;
   } catch (error) {
     iziToast.error({
       messageColor: '#FFF',
@@ -36,6 +41,8 @@ export default async function getPhotos(inputSearch, page) {
       message: `${error}`,
     });
   }
+
+
 }
 
 export const showSpiner = function () {
