@@ -1,10 +1,11 @@
 import iziToast from 'izitoast';
 import pixsbyApi from './js/pixaby-api';
 import closeIcon from './img/bi_x-octagon.png';
+import { showSpiner, hideSpiner } from './js/pixaby-api';
 
 const form = document.querySelector('form');
 const load = document.querySelector('.load');
-
+const loaderMore = document.querySelector('.loaderMore');
 // console.log(load);
 
 // load.classList.add("hidden")
@@ -16,14 +17,17 @@ let page = 1;
 let inputSearch;
 
 function onSearch(e) {
+  page = 1;
   inputSearch = form.elements.search.value;
   const list = document.querySelector('.gallery');
   list.innerHTML = '';
+
   onSearchButton(e);
 }
 
 function onClickMore(e) {
   page += 1;
+
   onSearchButton(e);
 }
 
@@ -40,7 +44,6 @@ function onSearchButton(e) {
     });
     return;
   }
-  form.insertAdjacentHTML('afterend', '<span class="loader"></span>');
 
   pixsbyApi(inputSearch, page);
   form.reset();

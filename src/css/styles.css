@@ -24,7 +24,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 @import url('./index.css');
 
 @import url('./reset.css');
@@ -160,7 +159,7 @@ p {
 .loader {
   width: 48px;
   height: 48px;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -169,12 +168,12 @@ p {
 }
 .loader::after,
 .loader::before {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 0;
   top: 0;
-  background: #FF3D00;
+  background: #ff3d00;
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -185,10 +184,11 @@ p {
   right: 0;
   bottom: 0;
 }
-.load{ font-family: inherit;
+.load {
+  font-family: inherit;
   padding: 8px 16px;
-width: 125px;
-height: 40px;
+  width: 125px;
+  height: 40px;
   font-size: 16px;
   color: #fff;
   letter-spacing: 0.04em;
@@ -196,9 +196,9 @@ height: 40px;
   border-radius: 8px;
   background-color: #4e75ff;
   text-align: center;
-display: flex;
-margin: 0 auto;}
-
+  display: flex;
+  margin: 0 auto;
+}
 
 @keyframes rotation {
   0% {
@@ -207,10 +207,15 @@ margin: 0 auto;}
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
+.hidden {
+  display: none;
+}
 
-.hidden{
-display: none;
-
+.loaderMore {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }

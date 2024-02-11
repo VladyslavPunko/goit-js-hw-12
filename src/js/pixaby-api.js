@@ -10,11 +10,11 @@ export default async function getPhotos(inputSearch, page) {
       q: `${inputSearch}`,
       image_type: 'photo',
       orientation: 'horizontal',
-      safesearch: 'true',
+      safesearch: 'false',
       per_page: 15,
       page: page,
     });
-
+    showSpiner();
     const result = await axios.get(`https://pixabay.com/api/?${searchParams}`);
     // const photos = result.json();
 
@@ -22,12 +22,11 @@ export default async function getPhotos(inputSearch, page) {
     if (arrayPhotos.length === 0) {
       noImages();
     }
-    const spanLoader = document.querySelector('.loader');
+
     renderPhoto(arrayPhotos);
+    hideSpiner();
+
     simpleLightbox();
-    spanLoader.remove();
-    const load = document.querySelector('.load');
-    load.classList.remove('hidden');
   } catch (error) {
     iziToast.error({
       messageColor: '#FFF',
@@ -38,3 +37,19 @@ export default async function getPhotos(inputSearch, page) {
     });
   }
 }
+
+export const showSpiner = function () {
+  const load = document.querySelector('.load');
+  const loaderMore = document.querySelector('.loaderMore');
+  load.classList.add('hidden');
+
+  loaderMore.innerHTML = '<span class="loader"></span>';
+};
+
+export const hideSpiner = function () {
+  const load = document.querySelector('.load');
+  const loaderMore = document.querySelector('.loaderMore');
+
+  load.classList.remove('hidden');
+  loaderMore.innerHTML = '';
+};
