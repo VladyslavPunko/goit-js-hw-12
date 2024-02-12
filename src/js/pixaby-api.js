@@ -4,7 +4,7 @@ import iziToast from 'izitoast';
 import closeIcon from '../img/bi_x-octagon.png';
 
 export default async function getPhotos(inputSearch, page) {
-  const limit = 200;
+  const limit = 15;
   try {
     const searchParams = new URLSearchParams({
       key: '42209591-dcd9ad54ecaffcfe9e9b64d04',
@@ -17,7 +17,6 @@ export default async function getPhotos(inputSearch, page) {
     });
     showSpiner();
     const result = await axios.get(`https://pixabay.com/api/?${searchParams}`);
-    // const photos = result.json();
 
     const arrayPhotos = result.data.hits;
     const totalHits = result.data.totalHits;
@@ -41,8 +40,6 @@ export default async function getPhotos(inputSearch, page) {
       message: `${error}`,
     });
   }
-
-
 }
 
 export const showSpiner = function () {

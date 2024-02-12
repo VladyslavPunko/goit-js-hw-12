@@ -197,7 +197,10 @@ p {
   background-color: #4e75ff;
   text-align: center;
   display: flex;
-  margin: 0 auto;
+  margin: 30px auto;
+}
+
+.load-more {
 }
 
 @keyframes rotation {

@@ -31,29 +31,9 @@ export const renderPhoto = function (photos) {
    </li>`
     )
     .join('');
-    const ul = document.querySelector('ul');
-    ul.lastElementChild;
-    console.log(ul.lastElementChild);
-
-   
 
   const list = document.querySelector('.gallery');
-  list.innerHTML +='<span class="pageLine" style="display:none"></span>'+markup;
-
-
-  let lastLi = document.querySelector('.pageLine:last-child');
-  let lastI = document.querySelector('.gallery-item:last-child');
-
-  console.log("li", lastLi)
-  console.log("i", lastI)
-  if(lastLi) {
-    let el = lastLi.nextElementSibling;
-    let rect = el.getBoundingClientRect();
-    console.log(rect);
-  }
-
-
-
+  list.innerHTML += markup;
 };
 
 export const simpleLightbox = function () {

@@ -29,15 +29,20 @@ async function onClickMore(e) {
   page += 1;
   const totalPage = await onSearchButton(e);
 
-  if(page >= totalPage ){
+  if (page >= totalPage) {
     iziToast.error({
-    messageColor: '#FFF',
-    color: 'blue',
-    iconUrl: closeIcon,
-    position: 'topRight',
-    message: "We're sorry, but you've reached the end of search results.",
-  })
-  ;}
+      messageColor: '#FFF',
+      color: 'blue',
+      iconUrl: closeIcon,
+      position: 'topRight',
+      message: "We're sorry, but you've reached the end of search results.",
+    });
+    const load = document.querySelector('.load');
+
+    load.classList.add('hidden');
+  }
+
+  smoothScroll();
 }
 
 async function onSearchButton(e) {
@@ -57,4 +62,15 @@ async function onSearchButton(e) {
   const totalPage = await pixsbyApi(inputSearch, page);
   form.reset();
   return totalPage;
+}
+
+function smoothScroll() {
+  const galleryCardHeight = document
+    .querySelector('.gallery-item')
+    .getBoundingClientRect().height;
+  window.scrollBy({
+    top: galleryCardHeight * 2,
+    left: 0,
+    behavior: 'smooth',
+  });
 }
