@@ -4,7 +4,7 @@ import iziToast from 'izitoast';
 import closeIcon from '../img/bi_x-octagon.png';
 
 export default async function getPhotos(inputSearch, page) {
-  const limit = 15;
+  const limit = 200;
   const load = document.querySelector('.load-more');
   try {
     const searchParams = new URLSearchParams({

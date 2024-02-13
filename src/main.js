@@ -37,6 +37,8 @@ async function onClickMore(e) {
       position: 'topRight',
       message: "We're sorry, but you've reached the end of search results.",
     });
+    const load = document.querySelector('.load-more');
+    load.classList.add('hidden');
   }
 
   smoothScroll();
