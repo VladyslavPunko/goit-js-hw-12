@@ -24,6 +24,9 @@ export default async function getPhotos(inputSearch, page) {
 
     if (arrayPhotos.length === 0) {
       noImages();
+      const load = document.querySelector('.load');
+
+      load.classList.add('load-more');
     }
 
     renderPhoto(arrayPhotos);

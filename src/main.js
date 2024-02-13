@@ -37,9 +37,6 @@ async function onClickMore(e) {
       position: 'topRight',
       message: "We're sorry, but you've reached the end of search results.",
     });
-    const load = document.querySelector('.load');
-
-    load.classList.add('hidden');
   }
 
   smoothScroll();
@@ -60,6 +57,13 @@ async function onSearchButton(e) {
   }
 
   const totalPage = await pixsbyApi(inputSearch, page);
+
+  // if (hists.length === 0) {
+  //   const load = document.querySelector('.load');
+
+  //   load.classList.add('hidden');
+  // }
+
   form.reset();
   return totalPage;
 }

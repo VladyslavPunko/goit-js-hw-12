@@ -200,7 +200,7 @@ p {
   margin: 30px auto;
 }
 
-.load-more {
+.load-more {display: none;
 }
 
 @keyframes rotation {
