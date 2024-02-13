@@ -58,12 +58,6 @@ async function onSearchButton(e) {
 
   const totalPage = await pixsbyApi(inputSearch, page);
 
-  // if (hists.length === 0) {
-  //   const load = document.querySelector('.load');
-
-  //   load.classList.add('hidden');
-  // }
-
   form.reset();
   return totalPage;
 }

@@ -5,6 +5,7 @@ import closeIcon from '../img/bi_x-octagon.png';
 
 export default async function getPhotos(inputSearch, page) {
   const limit = 15;
+  const load = document.querySelector('.load-more');
   try {
     const searchParams = new URLSearchParams({
       key: '42209591-dcd9ad54ecaffcfe9e9b64d04',
@@ -24,13 +25,15 @@ export default async function getPhotos(inputSearch, page) {
 
     if (arrayPhotos.length === 0) {
       noImages();
-      const load = document.querySelector('.load');
-
-      load.classList.add('load-more');
     }
 
     renderPhoto(arrayPhotos);
     hideSpiner();
+
+    if (arrayPhotos.length !== 0) {
+      const load = document.querySelector('.load');
+      load.classList.remove('hidden');
+    }
 
     simpleLightbox();
     return totalPages;
@@ -46,9 +49,7 @@ export default async function getPhotos(inputSearch, page) {
 }
 
 export const showSpiner = function () {
-  const load = document.querySelector('.load');
   const loaderMore = document.querySelector('.loaderMore');
-  load.classList.add('hidden');
 
   loaderMore.innerHTML = '<span class="loader"></span>';
 };
@@ -57,6 +58,5 @@ export const hideSpiner = function () {
   const load = document.querySelector('.load');
   const loaderMore = document.querySelector('.loaderMore');
 
-  load.classList.remove('hidden');
   loaderMore.innerHTML = '';
 };
