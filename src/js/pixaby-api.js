@@ -35,6 +35,11 @@ export default async function getPhotos(inputSearch, page) {
       load.classList.remove('hidden');
     }
 
+    if (arrayPhotos.length < 15) {
+      const load = document.querySelector('.load');
+      load.classList.add('hidden');
+    }
+
     simpleLightbox();
     return totalPages;
   } catch (error) {
@@ -52,6 +57,9 @@ export const showSpiner = function () {
   const loaderMore = document.querySelector('.loaderMore');
 
   loaderMore.innerHTML = '<span class="loader"></span>';
+
+  const load = document.querySelector('.load');
+  load.classList.add('hidden');
 };
 
 export const hideSpiner = function () {
